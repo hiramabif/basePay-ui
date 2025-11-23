@@ -1,36 +1,23 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+What we are trying to do here is create a simple pay dApp that allows a user to send payment (in any erc20 token) to multiple other users in a single transaction. This is useful for payroll, airdrops, or any other situation where you need to send the different amounts of tokens to multiple recipients.
 
-## Getting Started
+- User connects their wallet (connect wallet button using rainbowkit) ✅
+- User selects an ERC20 token to pay with(there is a dropdown that fetches all the erc20 tokens the user has in their wallet):✅
+    - Drop down list.✅
+    - Token symbol and logo shown in the dropdown list.✅
+- User inputs a list of recipient addresses and the amount to send to each address (there are multiple input areas where the user can add more recipients. the amount input area is beside each recipient input area)✅
+- User clicks "Pay" button✅
 
-First, run the development server:
+Quality of Life Features:
+- Validate recipient addresses and amounts before allowing the user to submit the transaction✅
+- Show estimated gas fees before submitting the transaction
+- Show transaction status (pending, success, failure) after submission✅
+- Create a small toggle button to switch between light and dark mode for better user experience✅
+- Responsive design to ensure usability on both desktop and mobile devices✅
+- Have a toggle button to switch between paying in ETH or ERC20 tokens✅
+- Have a search bar in the header to search for specific ERC20 tokens when selecting the token to pay with
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Needs To Be Fixed:
+- Logo should be the Base logo at both the top righ hand corner and the metadata (I will provide the svg in the assets folder)
+- Both connect buttons should follow the base colour code which is rgba(0,0,255,1) - this should apply to chain and account displays
+- Replace the "Hyper-Optimized Payments Text" with "BasePay " " [Logo]". The colour of this should be rgba(0,0,255,1)
+- Bottom connect button should return to previous state after 10 seconds aftertransaction is completed (or failed).

@@ -1,0 +1,14 @@
+<svg width="460" height="200" viewBox="0 0 460 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 'b' shape: Vertical bar + Bowl -->
+  <path d="M0 0H50V200H0V0Z" fill="#0052FF"/>
+  <path d="M50 100H100V200H50V100Z" fill="#0052FF"/>
+  
+  <!-- Square 1 -->
+  <rect x="120" y="100" width="100" height="100" fill="#0052FF"/>
+  
+  <!-- Square 2 -->
+  <rect x="240" y="100" width="100" height="100" fill="#0052FF"/>
+  
+  <!-- Square 3 -->
+  <rect x="360" y="100" width="100" height="100" fill="#0052FF"/>
+</svg>

@@ -1,26 +1,142 @@
 @import "tailwindcss";
 
+/* 
+ * CSS Variables (Custom Properties)
+ * We define semantic color names (like --background, --primary) instead of hardcoded hex codes.
+ * This allows us to easily switch themes by just changing the variable values.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Light Mode - Uniswap Style */
+  --background: #f9fafb;
+  --foreground: #0d111c;
+  /* Dark text for light background */
+  --primary: #0052FF;
+  /* Base Blue */
+  /* Coinbase Blue Gradient for buttons */
+  --primary-gradient: linear-gradient(135deg, #0052FF 0%, #0B3D91 100%);
+  --primary-foreground: #ffffff;
+  --card: #ffffff;
+  --card-foreground: #0d111c;
+  --border: #dce0e8;
+  --input: #f5f6fc;
+  /* Light grey for inputs */
+  --ring: #0052FF;
+
+  /* Glassmorphism / Panels */
+  --glass-bg: #ffffff;
+  --glass-border: #dce0e8;
+  --glass-shadow: 0 0 0 1px rgba(0, 0, 0, 0.01), 0 4px 11px rgba(0, 0, 0, 0.04);
 }
 
+/* 
+ * Dark Mode Overrides
+ * When the .dark class is present on the <html> tag (toggled by Header.tsx),
+ * these variable values will override the :root ones above.
+ */
+.dark {
+  /* Dark Mode - Base Blue Gradient Feel */
+  --background: #0d111c;
+  /* Very dark blue/black */
+  --foreground: #ffffff;
+  --primary: #0052FF;
+  --primary-gradient: linear-gradient(135deg, #0052FF 0%, #0B3D91 100%);
+  --primary-foreground: #ffffff;
+  --card: #131a2a;
+  /* Darker panel background */
+  --card-foreground: #ffffff;
+  --border: #293249;
+  /* Dark border */
+  --input: #1b2236;
+  /* Dark input background */
+  --ring: #0052FF;
+
+  /* Glassmorphism Dark */
+  --glass-bg: #131a2a;
+  --glass-border: #293249;
+  --glass-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02), 0 4px 11px rgba(0, 0, 0, 0.1);
+}
+
+/* 
+ * Tailwind Theme Configuration
+ * This maps our CSS variables to Tailwind utility classes.
+ * e.g., 'bg-background' will use var(--background).
+ */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-inter);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base Styles */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  /* Smooth theme transition */
+}
+
+/* Prevent zoom on mobile inputs */
+@media screen and (max-width: 768px) {
+
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* 
+ * UTILITY CLASSES 
+ * Custom classes for repeated UI patterns.
+ */
+
+/* Glass Panel: The main card container */
+.glass-panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: var(--glass-shadow);
+  border-radius: 24px;
+}
+
+/* Glass Input: Styled input fields */
+.glass-input {
+  background: var(--input);
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+  border-radius: 16px;
+}
+
+.glass-input:focus {
+  background: var(--input);
+  border-color: var(--primary);
+  outline: none;
+}
+
+/* Glass Button: Primary action buttons */
+.glass-button {
+  background: var(--primary-gradient);
+  color: var(--primary-foreground);
+  border-radius: 20px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.glass-button:hover {
+  filter: brightness(1.1);
+  /* Lighten on hover */
+}
+
+.glass-button:active {
+  transform: scale(0.98);
+  /* Click press effect */
 }
